@@ -1,0 +1,39 @@
+git init
+git remote add origin <REPO_URL>
+git add . OR git add <filename>
+git commit -m "Initial commit"
+git branch -M main  # Ensures the branch is named 'main'
+git push -u origin main
+
+git pull origin main --allow-unrelated-histories
+git add .
+git commit -m "Resolved merge conflicts"
+git push -u origin main
+OR
+git push -f origin main
+
+
+Install Git LFS
+git lfs install
+git lfs track "*.csv"
+git lfs track "*.ipynb"
+git add .gitattributes
+git add <your_large_file>
+git commit -m "Track large files with Git LFS"
+git push origin main
+
+
+REMOVE LARGE FILE FROM GIT HISTORY
+
+Install the BFG Repo-Cleaner:
+java -jar bfg.jar --delete-files btcusd_1-min_data.csv
+git push --set-upstream origin main --force OR git push --force
+
+Why Git LFS Didn't Work
+How Git LFS Works:
+
+Git LFS replaces large files with lightweight pointers in your Git history and stores the actual file content in a separate Git LFS storage area.
+However, the initial commit of the file (before being tracked by Git LFS) still exists in your Git history, triggering GitHub's file size limit.
+Large File Already in Git History:
+
+Even if you set up Git LFS and track the file, GitHub will reject the push because the large file is already in the history before being tracked by Git LFS.
