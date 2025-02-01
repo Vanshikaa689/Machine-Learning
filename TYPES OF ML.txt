@@ -1,0 +1,219 @@
+TYPES OF ML  
+batch/offline - all data together, periodic update
+
+online - batches of streaming data, continuous update on server
+libraries used for online learning - river and vowpal wabbit
+learning rate - how frequently you want to train your model in online learning
+
+out of core learning - big dataset - cannot use batch learning, process in chunks
+set up a detection system since this is tricky and risky. should have backups like db rollback
+
+instance based model - memorization (knn - lazy, doesn't do anything till new data arrives)
+generalisation - learning underlying concept - mathematical relationship bw i/p and o/p - make decision boundary 
+
+
+
+CHALLENGES IN MACHINE LEARNING 
+
+1.Data Collection - projects - Kaggle, companies use - apis or web scraping
+2.Insufficient Data/Unlabelled Data
+unreasonable effectiveness of large data - algo poor but model works well as large I/p data
+
+3.Non representative data - only tells partial story. leads to sampling noise, sampling bias
+
+4. Poor quality data. Data preprocessing is main - 60% of work
+5. Irrelevant feature. garbage in garbage out 
+6. Overfitting - fit only to training data not test 
+7. Underfitting - fit not to training and not to test 
+8. Software Integration 
+9. Offline learning and deployment
+10. Cost involved
+
+
+REAL LIFE MACHINE LEARNING APPLICATIONS
+B2B applications
+
+1. Retail - Amazon/Big Bazaar
+get to know which products stock to increase during sale based on ml algo 
+track buying behavior when asking for phone number - create profiles(type of customer, interest) if person buys fitness products then amazon gets money from gym guys to give customer phone number for gym to sms to person
+beer diaper association rule mining 
+2. Banking and Finance
+past defaulter and profile of new customer compared to see whether to sanction loan
+3. Transportation - OLA
+why is price from a->b location higher on these apps
+because demand(demand for taxis) is more supply(no of taxi driver in area) is less. but why would ola driver go to another far location to get a customer. This is why they have hotspots in the app(2x times normal amount would be given to the taxi driver)
+4. Tesla
+predictive maintenance(iot sensor)of robots manufacturing product 
+5. Consumer Internet - Twitter
+sentiment analysis on tweets of election
+nm will win 70%
+other - 30%
+sell this information to big stock broker companies
+they take money from rich people and put it on companies that are supporting nm eg reliance. buy shares of reliance at low prices
+suppose nm wins -> reliance shares will go up 
+reliance share prices increase as more people wanna buy. 
+so now the stock companies can sell these shares at higher prices
+profit  twitter and rich person
+
+
+
+
+MACHINE LEARNING LIFE CYCLE DEVELOPMENT
+1. Frame the problem properly(blueprint of what you gonna do, from where on what)
+2. Gathering Data(from different sources, csv - most easy, apis - json format, website - webscraping, database - data warehouse)
+3. Data preprocessing(remove duplicates, remove missing values, scale values etc)
+4. Exploratory Data Analysis (Univariate analysis, Outlier detection, blnce ds)
+5. Feature Engineering and selection
+6. Model Training and Evaluation
+7. Model Deployment(pickle, Heroku AWS, GCP)
+8. Testing
+9. Optimize(backup, load balancing, retrain frequency)
+
+JOB ROLES 
+Data Engineer - scrape data from sources 
+OLTP - website's database(db)
+OLAP - form this from OLTP to not expose db directly(dw)
+create pipelines to extract data from dw
+
+Data Analyst
+cleaning 
+organising
+creating visualizations
+producing and maintaining reports
+collaborating with teams based on insights gathered
+optimizing procedures
+
+stats, python, analytical thinking, business acumen, strong comm skills, data mining, data visualization, data story telling, SQL, Excel
+
+Data Scientist(main guy - fullstack)
+Predictive Modelling
+
+ML Engineer
+deploy model(bridge gap bw devops and ml)
+monitoring and maintenance of deployed models
+maths, python, distributed systems, data model evaluation, software engineering systems and design
+
+
+
+TENSORS 
+a data structure - a container for numbers
+0D tensor - 
+a = np.array(4)
+a.ndim() = 0
+
+1D tensor(vector)
+no. of axis = rank = dimension of tensor
+a = np.array([1,2,3,4])
+a. ndim() = 1
+but vector dimension is no of elements in the tensor
+
+ML - 0-5D
+1D tensor - one row in a table
+2D multiple rows in  table
+3D image
+4D images(a video)
+5D multiple videos
+
+VIRTUAL ENV 
+anaconda navigator - control panel of anaconda
+
+conda create --name ml
+conda activate ml
+conda install -c anaconda jupyter
+conda install numpy
+conda deactivate
+
+
+
+FRAMING AN ML PROBLEM
+
+1. business problem to machine learning(mathematical) problem
+Netflix - wants to increase revenue
+Churn rate - in a given period how many customers leave the platform
+new customer adding rate > churn rate - company doesn't end
+that means your job is to increase revenue by reducing churn rate
+
+2. Type of problem 
+see big picture -> identify customers who will leave the platform
+stop him from leaving the platform
+some plans of action:
+- give instant discount
+- identify his problem work on it (this will take many months so not a quick solution)
+you can make out this is a supervised learning classification problem
+
+but if you give every one same discount then it will result in loss to company 
+generate a score for every person between 1-100 about how much he wishes to leave
+means it is actually a regression problem 
+
+3. See current solutions
+see if you can use any of the factors from churn rate prediction model that has already been built
+
+4. Getting the data
+according to the problem decide what data will help you make the prediction
+- watch time of person
+- search but did not find
+- content left in the middle
+- clicked on recommendations
+
+All these things you convey to data engineer and he will fetch for you from data warehouse
+
+5. Metrics to measure
+
+how to see if the model you made is right or not (guiding star)
+define the metrics
+- see which people actually left and your predictions
+
+6. Online vs Batch
+Online would be better as we need incoming data every second
+many factors like holidays, lockdown will affect the data
+
+
+7. Check Assumptions
+check if the data you want is available
+check if your data gathered will work for all geographic locations
+
+
+
+UNDERSTANDING THE DATA
+1. asking basic questions
+2. EDA(univariate)
+3. EDA(bivariate)
+4. Pandas profiler
+
+
+FEATURE ENGINEERING
+1. Feature Transformation 
+- missing value imputation 
+- handling categorical features
+- outlier detection
+- feature scaling
+
+2. Feature Construction
+
+3. Feature Selection 
+
+4. Feature Extraction
+
+
+Feature Scaling
+1. standardization
+also called z-score normalization
+(Xi - Xm)/standard deviation 
+New dataset - 
+mean = 0, sd = 1
+geometric intuition - mean centering and scaling by factor of sd
+2. normalization
+Normalization is a technique often applied as a part of data preparation for machine learning. The goal of normalization is to change the values of numeric columns in the dataset to use a common scale, without distorting the difference in ranges of values of losing information
+
+min-max scaling - bad for outliers
+
+mean scaling - for centered data
+max-abs-scaling - for sparse data
+robust scaling - (xi - xmed)/IQR - robustscaler() class - robust to outliers
+
+ask these questions
+is feature scaling required?
+normalization or standardization 
+most will use standardisation 
+norm 
+min max - you should know min and max value for eg working with images min - 0, max - 255

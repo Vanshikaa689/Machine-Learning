@@ -37,3 +37,25 @@ However, the initial commit of the file (before being tracked by Git LFS) still 
 Large File Already in Git History:
 
 Even if you set up Git LFS and track the file, GitHub will reject the push because the large file is already in the history before being tracked by Git LFS.
+
+
+
+
+MERGING CONFLICTS AND ADDING NEW FOLDERS
+
+This fetches and merges the latest changes from GitHub (main branch) into your local repository.
+
+git fetch origin
+git pull origin main
+
+Open the Conflicting File, manually Resolve Conflicts
+Edit the file to remove the conflict markers (<<<<<<<, =======, >>>>>>>) and keep the desired content.
+
+git add <file-name>
+git commit -m "Resolved merge conflict in API file"
+
+Add new files
+git add .
+git commit -m "Added new ML folders and resolved merge conflicts"
+git push origin main
+
